@@ -6,7 +6,7 @@ import math
 import time
 
 b = Bridge('10.0.0.16')
-
+lights = b.lights
 
 def pulse(light=b.lights[-1], period=5.0, update_frequency=10.0):
 	f = 1./(period)

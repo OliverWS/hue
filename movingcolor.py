@@ -20,15 +20,15 @@ def processVideo(f, fps=1.0, ncolors=3, run=True, dry_run=False):
 def processFrame(f, fps=10.0,ncolors=3,dry_run=False):
 	colors = img2colors.colorz(f, n=ncolors)
 	print json.dumps(colors, indent=3)
-	for l in hue.b.lights:
-		i = hue.b.lights.index(l)
+	for l in hue.lights:
+		i = hue.lights.index(l)
 		if i >= len(colors):
 			i = len(colors)-1
 		r,g,b = colors[i]
 		h,s,v = colorsys.rgb_to_hsv(r/255.0,g/255.0,b/255.0)
 		if not dry_run:
 			l.transition = 10.0/fps
-			l.brightness = int(v)
+			l.brightness = int(v*255.0)
 			l.hue = int(h*65535.0)
 			l.saturation = int(255.0*s)
 
