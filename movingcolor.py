@@ -12,7 +12,7 @@ def processVideo(f, fps=1.0, ncolors=3, run=True, dry_run=False):
 		processFrame(f, fps=fps,ncolors=ncolors)
 	else:
 		while 1:
-			os.system("ffmpeg -i " + f + " frame.png -y")
+			os.system("avconv -i " + f + " frame.png -y")
 			processFrame("frame.png", fps=fps,ncolors=ncolors,dry_run=dry_run)
 			if not run:
 				break
