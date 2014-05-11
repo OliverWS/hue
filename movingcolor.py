@@ -35,6 +35,8 @@ def processFrame(f, fps=10.0,ncolors=3,dry_run=False):
 
 def main():
 	dryrun = (len([x for x in sys.argv if "dry-run" in x]) > 0)
+	if dryrun:
+		print "Executing as dryrun"
 	if len(sys.argv) == 2:
 		processVideo(sys.argv[1], dry_run=dryrun)
 	elif len(sys.argv) == 3:
