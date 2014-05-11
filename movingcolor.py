@@ -22,6 +22,8 @@ def processFrame(f, fps=10.0,ncolors=3,dry_run=False):
 	print json.dumps(colors, indent=3)
 	for l in hue.b.lights:
 		i = hue.b.lights.index(l)
+		if i >= len(colors):
+			i = len(colors)-1
 		r,g,b = colors[i]
 		h,s,v = colorsys.rgb_to_hsv(r/255.0,g/255.0,b/255.0)
 		if not dry_run:
